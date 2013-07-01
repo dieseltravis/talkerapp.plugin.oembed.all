@@ -49,7 +49,7 @@ plugin.onMessageInsertion = function (event) {
 			togglerUp: "\u2295",
 			onProviderNotFound: function (u) { 
 				console.log("onProviderNotFound");
-                console.log(u);
+                		console.log(u);
 				anyErrors = true; 
 			},
 			onError: function (u, e) { 
@@ -66,7 +66,7 @@ plugin.onMessageInsertion = function (event) {
 			afterEmbed: function () { 
 				//console.log("afterEmbed");
 				//console.log(anyErrors);
-              $loading.fadeOut("slow", function () {$loading.remove();});
+              			$loading.fadeOut("slow", function () {$loading.remove();});
 				if (anyErrors) {
 					$loading.remove();
 					$anchor.prev(".oembedall-closehide").remove();
@@ -106,7 +106,7 @@ plugin.onMessageInsertion = function (event) {
 				}],
 				["blip", "video", ["blip\\.tv/.+"], "//blip.tv/oembed/"],
 				["hulu", "video", ["hulu\\.com/watch/.*"], "//www.hulu.com/api/oembed.json"],
-				["vimeo", "video", ["www\.vimeo\.com\/groups\/.*\/videos\/.*", "www\.vimeo\.com\/.*", "vimeo\.com\/groups\/.*\/videos\/.*", "vimeo\.com\/.*"], "//vimeo.com/api/oembed.json"],
+				["vimeo", "video", ["www\\.vimeo\\.com\/groups\/.*\/videos\/.*", "www\\.vimeo\\.com\/.*", "vimeo\\.com\/groups\/.*\/videos\/.*", "vimeo\\.com\/.*"], "//vimeo.com/api/oembed.json"],
 				["dailymotion", "video", ["dailymotion\\.com/.+"], '//www.dailymotion.com/services/oembed'],
 				["Spotify", "rich", ["open.spotify.com/(track|album|user)/"], "https://embed.spotify.com/oembed/"],
 				["mixcloud", "rich", ["mixcloud.com/.+"], '//www.mixcloud.com/oembed/', {
@@ -168,7 +168,8 @@ plugin.onMessageInsertion = function (event) {
 						height: '300'
 					}
 				}],
-				["github", "rich", ["gist.github.com/.+"], "https://github.com/api/oembed"],
+		      //TODO: fix gists
+				["gist.github", "rich", ["gist\\.github\\.com\\/.+"], "https://github.com/api/oembed"],
 				["github", "rich", ["github.com/[-.\\w@]+/[-.\\w@]+"], "https://api.github.com/repos/$1/$2?callback=?", {
 					templateRegex: /.*\/([^\/]+)\/([^\/]+).*/,
 					templateData: function (data) {
@@ -189,7 +190,7 @@ plugin.onMessageInsertion = function (event) {
 						if (data.picture) out += '<a href="' + data.link + '"><img src="' + data.picture + '"></a>';
 						else out += '<img src="https://graph.facebook.com/' + data.id + '/picture">';
 						if (data.from) out += '<a href="' + data.link + '">' + data.name + '</a>';
-						if (data.founded) out += 'Founded: <strong>' + data.founded + '</strong><br>'
+						if (data.founded) out += 'Founded: <strong>' + data.founded + '</strong><br>';
 						if (data.category) out += 'Category: <strong>' + data.category + '</strong><br>';
 						if (data.website) out += 'Website: <strong><a href="' + data.website + '">' + data.website + '</a></strong><br>';
 						if (data.gender) out += 'Gender: <strong>' + data.gender + '</strong><br>';
@@ -205,7 +206,7 @@ plugin.onMessageInsertion = function (event) {
 						var q = data.questions[0];
 						var body = $(q.body).text();
 						var out = '<div class="oembedall-stoqembed"><div class="oembedall-statscontainer"><div class="oembedall-statsarrow"></div><div class="oembedall-stats"><div class="oembedall-vote"><div class="oembedall-votes">' + '<span class="oembedall-vote-count-post"><strong>' + (q.up_vote_count - q.down_vote_count) + '</strong></span><div class="oembedall-viewcount">vote(s)</div></div>' + '</div><div class="oembedall-status"><strong>' + q.answer_count + '</strong>answer</div></div><div class="oembedall-views">' + q.view_count + ' view(s)</div></div>' + '<div class="oembedall-summary"><h3><a class="oembedall-question-hyperlink" href="http://stackoverflow.com/questions/' + q.question_id + '/">' + q.title + '</a></h3>' + '<div class="oembedall-excerpt">' + body.substring(0, 100) + '...</div><div class="oembedall-tags">';
-						for (i in q.tags)
+						for (var i in q.tags)
 							out += '<a title="" class="oembedall-post-tag" href="http://stackoverflow.com/questions/tagged/' + q.tags[i] + '">' + q.tags[i] + '</a>';
 						out += '</div><div class="oembedall-fr"><div class="oembedall-user-info"><div class="oembedall-user-gravatar32"><a href="http://stackoverflow.com/users/' + q.owner.user_id + '/' + q.owner.display_name + '">' + '<img width="32" height="32" alt="" src="http://www.gravatar.com/avatar/' + q.owner.email_hash + '?s=32&amp;d=identicon&amp;r=PG"></a></div><div class="oembedall-user-details">' + '<a href="http://stackoverflow.com/users/' + q.owner.user_id + '/' + q.owner.display_name + '">' + q.owner.display_name + '</a><br><span title="reputation score" class="oembedall-reputation-score">' + q.owner.reputation + '</span></div></div></div></div></div>';
 						return out;
@@ -256,5 +257,5 @@ plugin.onMessageInsertion = function (event) {
 				]
 			]
 		});
-    } 
+	} 
 };
