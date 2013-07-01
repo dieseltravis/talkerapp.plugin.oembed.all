@@ -546,14 +546,14 @@
 		}
 	};
 
-})(this.jQuery);
+})(window.jQuery);
 
 // Note MD5 String extension removed
 //TODO: include md5 and all known providers and short urls in separate file?
 
 // begin Talker plugin code
-var plugin = this.plugin,
-    Talker = this.Talker;
+//var plugin = this.plugin,
+//	Talker = this.Talker;
 
 plugin.oembedAll = {
 	icon: "data:image/gif;base64,R0lGODlhEAAQAPUAAGZmZmhoaG1tbXd3d39/f4WFhYiIiI+Pj5+fn6urq6+vr7S0tLq6ur6+vsHBwcXFxcjIyM7OztLS0tjY2NnZ2d7e3uLi4uTk5Ozs7Pb29vj4+P///4uLi8nJydPT09TU1Obm5urq6oaGhsbGxsrKyn19fcvLy9/f3+Dg4Lu7u/Hx8fn5+Wpqam5uboyMjLa2tsfHx8/Pz+vr6/T09Pv7+wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/i1NYWRlIGJ5IEtyYXNpbWlyYSBOZWpjaGV2YSAod3d3LmxvYWRpbmZvLm5ldCkAIfkEAQoAGwAsAAAAABAAEAAABXXgJo5blpEoeT3QlY7mJjmOVJ4kdhhXRVcXwwFDoggCkY3lookABBRShrHAiTILhlVDfIkwGlFi0PA2BolSAYDwIgCG8GRh8V4U0RGmm+N/CwR1IxYEBX5GATYREDIBAhUkGg8OGhSOFBoOD2EvhIFeKBcuKSEAIfkEAQoABgAsAAAAABAAEAAABnlAg3BILBoNmcUicxRmmJ4AwKMBgTREzIEDCnEOoYrDUSFSBIEIkhkZf4gZxpIIenQwQw3++MRgDQkDDU0NAwlIHAAITQgAHEwUCiBNIApvQxh7RCFMmwUEFkQVBAUhZmhqEalSZXkPDhofaBQaDg9/RhYEoE1FVkdBACH5BAEKAAUALAAAAAAQABAAAAaAwIJwSCwaC5nFInMUZpieAMCDZBIxBw4oxDmEQN0QkSIIRKqFCEBAIWYYS/eCYS1oME1kBV9IDBpHGSQOIyEZBwAIRxgjDg4gBR4KFk0UIx51GXxEIRgZGkMgIgSUQxUEImJDZAEeGhFnEQECFW4jDRqsFBqEoEcWBKR5RCCQRkEAIfkEAQoABAAsAAAAABAAEAAABntAgnBILBoJmcUicxRmmJ4A4INkEjEHDijEOYRA3RCRIghEqoQIQEAhZhhL94JhJWgwTSHGmhg0mg0DCXYcAAhNCAAcUAoWTSAKVEMZeG4nFhpEIQUljkMfDg4nY2VnEREaHqGSQw8OGh8CAh8hJiaVRhYlnXaZeSAgR0EAIfkEAQoABgAsAAAAABAAEAAABntAg3BILBoNmcUicxRmmJ5AwINkEjEHDijEOYRABS+RIghEqoYIQEAhZhhL94KhGWowTSGmbkgMGk0NAwlIHACERwgAHFAJbUcgClRDGXhFGJZDIQUEKAYadSgEBSFjZR4YHhGpAWxFDw0ZHg4OHhkOD3kUtI95SBS2RkEAIfkEAQoABgAsAAAAABAAEAAABn1Ag3BILBoNmcUicxRmmJ4A4INkEjEHDijEOYRA3RCRIghEqoYIQEAhZhhL94JhNWgwTSHGmhg0mg0DCUgHAAhNCAAcTB8KIE0gClRCGigndXqYBicODpNCJwQFYkMenR4ZESZpUidXqiEfAmwaDg8aRRpMKAQEKHlEII9GQQAh+QQBCgAFACwAAAAAEAAQAAAGfcCCcEgsGguZxSJzFGZUBU8g4CmomETMgQMKcQ4h0BdDpAgCESQzEhBQiKvUkphMrYahCrQZumMeDiRYRSkDCSsgDg4Pe0UIABwZGR4PFHdGIAlvBSsZGGRFn0UhIgQWRBUEIiFlZ1URaVJuRQ92Hq4ri00FFgSmu0QgIEdBACH5BAEKAAEALAAAAAAQABAAAAaAwIBwSCwaA7PXa3YM0EAgmofF8iCZxIrDQZFxXBjQV0b0bGPXQAzQohBlHRiImGzQhjTMDGvE3GkJAw1NDQMJNDMuAAhNCAAcTB8KFk0gCm5DMxhGMmREIAUElEMVBAWeQhQtAB40MR1qLG1ENDB2Hy0tHzQOMHdHFgSiTUVQR0EAOw=="
@@ -566,7 +566,7 @@ plugin.onMessageInsertion = function (/*event*/) {
 		return true; // Do not transform the link a second time.
 	} else {
 		var anyErrors = false,
-			$loading = $("<img src='" + plugin.oembedAll.icon + "' width='32' height='32' style='position:relative' />");
+			$loading = window.jQuery("<img src='" + plugin.oembedAll.icon + "' width='32' height='32' style='position:relative' />");
 
 		// tag as tranformed so we don't do it again
 		$anchor.addClass('transformed').oembed(null, {
