@@ -72,7 +72,7 @@ plugin.onMessageInsertion = function (event) {
 					$anchor.prev(".oembedall-closehide").remove();
 				}
 			},
-			shortURLList: [ "bit.ly" ],
+			shortURLList: [ "4sq\\.com", "bit\\.ly", "fb\\.me", "flic\\.kr", "goo\\.gl", "lnkd\\.in", "nyti\\.ms", "t\\.co", "tinyurl\\.com", "urlshorteningservicefortwitter\\.com", "wapo\\.st", "youtu\\.be" ],
 			oembedProviders: [
               [
                 "flickr", 
